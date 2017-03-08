@@ -1,0 +1,28 @@
+.nav-bar {
+	height: auto;
+	display: flex;
+	background-color: $cod-gray;
+	
+	ul {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    display: flex;
+	    width: 100vw;
+	    justify-content: flex-end;
+	}
+
+	li a {
+	    display: block;
+	    color: white;
+	    align-content: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	}
+
+	li a:hover {
+	    background-color: $tundora;
+	}
+
+}
