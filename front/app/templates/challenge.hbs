@@ -1,6 +1,7 @@
 <div class="challenges">
-
-	<a class="box"><span>1</span></a>
-	<a class="box"><span>2</span></a>
-	<a class="box"><span>3</span></a>
+	{{#each model as |challenge|}}
+		<a class="box">
+			<span>{{challenge.points}}</span>
+		</a>
+	{{/each}}
 </div>
