@@ -2,7 +2,7 @@ from django.shortcuts import render
 from api.models import *
 from django.contrib.auth.models import User
 from rest_framework import viewsets
-#from api.serializers import *
+from api.serializers import *
 from rest_framework.views import APIView
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -15,7 +15,6 @@ from rest_framework_json_api.views import RelationshipView
 from rest_framework_json_api import serializers
 
 # Create your views here.
-
 class Session(APIView):
 	permission_classes = (AllowAny,)
 	def form_response(self, isauthenticated, userid, username, error=""):
@@ -51,3 +50,12 @@ class Session(APIView):
 		# Logout
 		logout(request)
 		return Response(status=status.HTTP_204_NO_CONTENT)
+
+# Create your views here.
+class ChallengeViewSet(viewsets.ModelViewSet):
+    permission_classes = (AllowAny,)
+    queryset = Challenge.objects.all()
+    serializer_class = ChallengeSerializer  
+
+
+  
