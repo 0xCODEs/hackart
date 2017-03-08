@@ -17,6 +17,7 @@
 /front/testem.log
 
 # django
+*.pyc
 /db.sqlite3
 /hackart/urls.pyc
 /hackart/wsgi.pyc

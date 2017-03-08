@@ -25,7 +25,7 @@ SECRET_KEY = '7$x4x@#=w^_@d*yep49wfla2)lvu^!g)&+ea76n2xjkqyno(n#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['gitlab.nullify.online']
 
 
 # Application definition
@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #App specific
+    'rest_framework',
+    'api'
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
