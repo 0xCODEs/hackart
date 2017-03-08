@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('admin');
   this.route('challenges');
   this.route('login');
+  this.route('catch-all');
+  this.route('404');
 });
 
 export default Router;
