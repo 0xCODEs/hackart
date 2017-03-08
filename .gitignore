@@ -15,3 +15,10 @@
 /front/libpeerconnection.log
 /front/npm-debug.log
 /front/testem.log
+
+# django
+/db.sqlite3
+/hackart/urls.pyc
+/hackart/wsgi.pyc
+/hackart/__init__.pyc
+/hackart/settings.pyc
