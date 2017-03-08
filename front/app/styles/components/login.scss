@@ -1,0 +1,16 @@
+.login-box {
+	display: flex;
+    background-color: white;
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px;
+    margin-top: 40px;
+
+    form {
+    	.login-input {
+    		width: 200px;
+    		margin: 20px 0px;
+    	}
+    }
+}

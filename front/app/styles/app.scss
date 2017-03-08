@@ -3,7 +3,8 @@
 @import "./variables.scss";
 
 /* components */
-@import "./components/challenges.scss";
+@import "./components/challenge.scss";
+@import "./components/login.scss";
 @import "./components/navbar.scss";
 
 body {
@@ -39,8 +40,4 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-}
-
-.test {
-	color: $red;
 }

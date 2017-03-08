@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('admin');
-  this.route('challenges');
+  this.route('challenge');
   this.route('login');
   this.route('catch-all');
   this.route('404');
