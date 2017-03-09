@@ -57,5 +57,12 @@ class ChallengeViewSet(viewsets.ModelViewSet):
     queryset = Challenge.objects.all()
     serializer_class = ChallengeSerializer  
 
-
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed.
+    """
+    permission_classes = (AllowAny,)
+    resource_name = 'users'
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
   

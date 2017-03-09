@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     #App specific
     'rest_framework',
-    'api'
+    'api',
+    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
@@ -79,7 +80,11 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'hackart.urls'
 

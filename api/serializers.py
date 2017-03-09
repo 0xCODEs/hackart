@@ -11,4 +11,10 @@ class ChallengeSerializer(serializers.ModelSerializer):
   """
   class Meta:
     model = Challenge
-    fields = '__all__'
+    fields = ('id', 'title', 'points', 'description', 'created')
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        resource_name = 'users'
+        model = User
+        fields = ('id', 'username', 'email', 'password')
