@@ -1,6 +1,9 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
+from datetime import datetime
+import time
 
 class Challenge(models.Model):
   """
@@ -15,8 +18,30 @@ class Challenge(models.Model):
   class Meta:
     verbose_name_plural = 'Challenges'
 
-  class JSONAPIMeta:
-    resource_name = "challenge"
+  def delete(self, *args, **kwargs):
+    # get teams before deletion
+    solved = self.solved.all()
+    for team in solved:
+      team.points -= self.points
+
+    super(Challenge, self).delete(*args, **kwargs)
+
+    # update teams after deletion
+    for team in solved:
+      team.save()
+
+  def save(self, *args, **kwargs):
+    # get solved teams
+    solved = None
+    if self.id:
+      solved = self.solved.all()
+
+    super(Challenge, self).save(*args, **kwargs)
+
+    # update solved teams after changes
+    if solved:
+      for team in solved:
+        team.save()
 
   def _get_number_solved(self):
     """
@@ -47,10 +72,10 @@ class Team(models.Model):
   scoreboard = models.ForeignKey('Scoreboard', related_name='teams', related_query_name='team')
   team_name = models.CharField(max_length=60, unique=True)
   points = models.IntegerField(default=0)
-  correctflags = models.IntegerField(default=0)
-  wrongflags = models.IntegerField(default=0)
+  correct_flags = models.IntegerField(default=0)
+  wrong_flags = models.IntegerField(default=0)
   user = models.OneToOneField(User, related_name='teams', related_query_name='team')
-  solved = models.ManyToManyField('Challenge', blank=True, related_name='solved', through='challenge_timestamp')
+  solved = models.ManyToManyField('Challenge', blank=True, related_name='solved', through='ChallengeTimestamp')
   last_timestamp = models.DateTimeField(default=datetime.fromtimestamp(0))
   created = models.DateTimeField(auto_now_add=True)
     
@@ -84,13 +109,13 @@ class Team(models.Model):
     return self.points
 
 
-class Challenge_Timestamp(models.Model):
+class ChallengeTimestamp(models.Model):
   """
-  Challenge timestamp model class.
+  Challenge Timestamp model class.
   """
-  team = models.ForeignKey('Team', related_name='challenge_timestamps', related_query_name='challenge_timestamp')
-  challenge = models.ForeignKey('Challenge', related_name='challenge_timestamps', related_query_name='challenge_timestamp')
+  team = models.ForeignKey('team', on_delete=models.CASCADE, related_name='challenge_timestamps', related_query_name='challenge_timestamp')
+  challenge = models.ForeignKey('challenge', on_delete=models.CASCADE, related_name='challenge_timestamps', related_query_name='challenge_timestamp')
   created = models.DateTimeField(auto_now_add=True)
 
   class Meta:
-    verbose_name_plural = 'Challenge_Timestamps'
+    verbose_name_plural = 'ChallengeTimestamps'

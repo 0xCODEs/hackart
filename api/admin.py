@@ -12,3 +12,6 @@ from api.models import *
 #  list_display = ('category', 'points', 'title')
 
 admin.site.register(Challenge)
+admin.site.register(Scoreboard)
+admin.site.register(Team)
+admin.site.register(ChallengeTimestamp)
