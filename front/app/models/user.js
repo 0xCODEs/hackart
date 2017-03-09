@@ -5,4 +5,5 @@ export default DS.Model.extend({
 	username: DS.attr('string'),
 	email: DS.attr('string'),
 	password: DS.attr('string'),
+	is_staff: DS.attr('string'),
 });
