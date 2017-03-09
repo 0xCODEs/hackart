@@ -1,10 +1,10 @@
 <div class="login-box">
 	<form>
 		<div>
-            {{input class="form-control login-input" type="text" value=username placeholder="Username"}}
+            {{input class="form-control login-input" type="text" value=auth.username placeholder="Username"}}
 		</div>
 		<div>
-            {{input class="form-control login-input" type="password" value=password placeholder="Password"}}
+            {{input class="form-control login-input" type="password" value=auth.password placeholder="Password"}}
 		</div>
 		<button class="login-button" {{action 'login'}}>Login</button>
 	</form>

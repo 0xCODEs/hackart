@@ -1,17 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	authController: null,
-	username: '',
-	password: '',
-
-	actions: {
-		login() {
-			const username = this.get('username');
-			const password = this.get('password');
-			const authController = this.get('authController');
-
-			authController.authenticate(username, password);
+	auth: Ember.inject.service('authentication'),
+	actions:{
+		login: function(){
+			this.get('auth').login();
+		},
+		logout: function(){
+			this.get('auth').logout();
 		}
 	}
 });
