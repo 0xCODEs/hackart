@@ -11,9 +11,11 @@ export default Ember.Service.extend({
 	errorMsg: '',
 
 	//stored data
-	user: null,
+	user: {
+    	is_staff: false
+	},
 	// profile: null,
-	isLoggedIn: false,
+	isLoggedIn : false,
 	login: function(){
 		console.log('Logging in:');
 
@@ -24,7 +26,8 @@ export default Ember.Service.extend({
 
 		var data = {
 			'username': username,
-			'password': password};
+			'password': password
+		};
 		var auth = this;
 
 		//make api request
@@ -55,6 +58,7 @@ export default Ember.Service.extend({
 				// }
 
 				// console.log(auth.profile);
+				console.log('HERE: ', auth.user);
 
 				auth.get('routing').transitionTo('challenge');
 				
