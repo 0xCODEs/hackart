@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	isAuthenticated: false,
+	isauthenticated: false,
 
 	session: {
-		'isAuthenticated': false,
+		'isauthenticated': false,
 		'username': null,
 		'email': null,
 		'team': null,
@@ -17,11 +17,12 @@ export default Ember.Controller.extend({
 
 		Ember.$.ajax({
 			type: "POST",
-			url: "http://gitlab.nullify.online:8080/api/session/",
+			url: "http://gitlab.nullify.online:8592/api/session/",
 			data: { username: username, password: password }
 		}).then((results) => {
 			console.log('results', results);
 			if (results.data.isauthenticated === true) {
+				this.session.isauthenticated = true;
 				console.log('auth succeeds');
 			} else {
 				console.log('auth fails');
