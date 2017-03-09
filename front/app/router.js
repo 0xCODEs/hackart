@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('login');
   this.route('catch-all');
   this.route('404');
+  this.route('scoreboard');
 });
 
 export default Router;

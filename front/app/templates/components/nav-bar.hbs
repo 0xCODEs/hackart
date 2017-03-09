@@ -1,13 +1,14 @@
 <div class="nav-bar">
 	<ul>
-		{{#link-to 'login' tagName='li'}}
-			{{link-to 'Login' 'login'}}
-		{{/link-to}}
 		{{#link-to 'challenge' tagName='li'}}
 			{{link-to 'Challenges' 'challenge'}}
+		{{/link-to}}
+		{{#link-to 'scoreboard' tagName='li'}}
+			{{link-to 'Scoreboard' 'scoreboard'}}
 		{{/link-to}}
 		{{#link-to 'admin' tagName='li'}}
 			{{link-to 'Admin' 'admin'}}
 		{{/link-to}}
+		<li><a onClick={{action "logout"}}>Logout</a></li>
 	</ul>
 </div>
