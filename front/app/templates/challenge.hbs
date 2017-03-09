@@ -1,16 +1,16 @@
 <div class="challenges">
 	{{#each model as |challenge|}}
-		<a class="box">
+		<a class="box" onClick={{action "popModal" challenge}}>
 			<span>{{challenge.points}}</span>
 		</a>
 
 		{{!-- idea here would be to create unique modals per |challenge| and pop them accordingly --}}
 		{{!-- i know that we can bring in ember addons, etc, but the cleaner we keep the app, the smoother it'll run --}}
 		{{!-- trigger would be performed inside a controller, but since I can't test, I'll leave for another time right now --}}
-		<div id="modal" class="modal">
+		<div id="modal-{{challenge.id}}" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
-					<span class="close">&times;</span>
+					<span class="close" onClick={{action "closeModal" challenge}}>&times;</span>
 					<h2>{{challenge.title}}</h2>
 				</div>
 				<div class="modal-body">
