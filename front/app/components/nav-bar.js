@@ -1,10 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+	auth: Ember.inject.service('authentication'),
 
 	actions: {
 		logout() {
-			console.log('clicked log out');
+			this.get('auth').logout();
 		}
 	}
 });
