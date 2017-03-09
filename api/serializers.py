@@ -18,3 +18,17 @@ class UserSerializer(serializers.ModelSerializer):
         resource_name = 'users'
         model = User
         fields = ('id', 'username', 'email', 'password', 'is_staff')
+
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        resource_name = 'teams'
+        model = Team
+        fields = "__all__"
+
+class ScoreboardSerializer(serializers.ModelSerializer):
+  """
+  Sets fields for the rest api to serialize in the Scoreboard model.
+  """
+  class Meta:
+    model = Scoreboard
+    fields = ('id', 'numtopteams', 'teams')

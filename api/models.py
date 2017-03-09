@@ -18,6 +18,9 @@ class Challenge(models.Model):
   class Meta:
     verbose_name_plural = 'Challenges'
 
+  def __unicode__(self):
+    return '{} {}'.format(self.title, self.points)
+
   def delete(self, *args, **kwargs):
     # get teams before deletion
     solved = self.solved.all()
@@ -65,6 +68,10 @@ class Scoreboard(models.Model):
   class JSONAPIMeta:
     resource_name = "scoreboard"
 
+  def __unicode__(self):
+    return '{}'.format(self.id)
+
+
 class Team(models.Model):
   """
   Team model class.
@@ -81,6 +88,9 @@ class Team(models.Model):
     
   class Meta:
     verbose_name_plural = 'Teams'
+
+  def __unicode__(self):
+    return '{}'.format(self.team_name)
 
   def solves(self):
     challenge_timestamps = []
@@ -119,3 +129,6 @@ class ChallengeTimestamp(models.Model):
 
   class Meta:
     verbose_name_plural = 'ChallengeTimestamps'
+
+  def __unicode__(self):
+    return 'timestamp {}: {}'.format(self.id, self.created)

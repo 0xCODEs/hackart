@@ -65,4 +65,24 @@ class UserViewSet(viewsets.ModelViewSet):
     resource_name = 'users'
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class TeamViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed.
+    """
+    permission_classes = (AllowAny,)
+    resource_name = 'teams'
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
+  
+class ScoreboardViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed.
+    """
+    permission_classes = (AllowAny,)
+    resource_name = 'scoreboard'
+    queryset = Scoreboard.objects.all()
+    serializer_class = ScoreboardSerializer
+  
+  
   

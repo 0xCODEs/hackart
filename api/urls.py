@@ -8,6 +8,8 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'challenges', ChallengeViewSet)
 router.register(r'users', UserViewSet)
+router.register(r'teams', TeamViewSet)
+router.register(r'scoreboard', ScoreboardViewSet)
 #router.register(r'users', views.UserViewSet)
 #router.register(r'likes', views.LikeViewSet)
 #router.register(r'userprofiles', views.UserprofileViewSet)
