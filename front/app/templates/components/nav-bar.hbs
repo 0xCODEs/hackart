@@ -15,9 +15,12 @@
 			{{#link-to 'challenge' tagName='li'}}
 				{{link-to 'Challenges' 'challenge'}}
 			{{/link-to}}
-			{{#link-to 'admin' tagName='li'}}
-				{{link-to 'Admin' 'admin'}}
-			{{/link-to}}
+			{{log 'auth.user' auth.user.is_staff}}
+			{{#if auth.user.is_staff}}
+				{{#link-to 'admin' tagName='li'}}
+					{{link-to 'Admin' 'admin'}}
+				{{/link-to}}
+			{{/if}}
 			<li><a onClick={{action "logout"}}>Logout</a></li>
 		{{/if}}
 	</ul>

@@ -10,7 +10,7 @@
 
 body {
 	margin: 0;
-	font-family: $font-stack
+	font-family: $font-stack;
 }
 
 @media (min-width: 768px) {
@@ -33,12 +33,4 @@ body {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
-
-html { 
-	background: url(https://fsmedia.imgix.net/52/b9/41/d8/97eb/4c85/8d1a/087e96e6f9e0/peachs-castlejpg.jpeg) no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
 }

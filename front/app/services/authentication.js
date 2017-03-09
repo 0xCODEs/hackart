@@ -11,9 +11,8 @@ export default Ember.Service.extend({
 	errorMsg: '',
 
 	//stored data
-	user: {
-    	is_staff: false
-	},
+	user: null,
+
 	// profile: null,
 	isLoggedIn : false,
 	login: function(){

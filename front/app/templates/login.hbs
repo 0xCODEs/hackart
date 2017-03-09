@@ -1,12 +1,14 @@
-<div class="login-box">
-	<img src="/images/codecrush.png">
-	<form>
-		<div>
-            {{input class="form-control login-input" type="text" value=auth.username placeholder="Username"}}
-		</div>
-		<div>
-            {{input class="form-control login-input" type="password" value=auth.password placeholder="Password"}}
-		</div>
-		<button class="login-button" {{action 'login'}}>Login</button>
-	</form>
+<div id="container" class="container">
+	<div class="login-box">
+		<img src="/images/codecrush.png">
+		<form>
+			<div>
+	            {{input class="form-control login-input" type="text" value=auth.username placeholder="Username"}}
+			</div>
+			<div>
+	            {{input class="form-control login-input" type="password" value=auth.password placeholder="Password"}}
+			</div>
+			<button class="login-button" {{action 'login'}}>Login</button>
+		</form>
+	</div>
 </div>
