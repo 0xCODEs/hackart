@@ -1,15 +1,24 @@
 <div class="nav-bar">
+	{{#if auth.isLoggedIn}}
+		<span class="welcome-text">Hello {{auth.user.username}}</span>
+	{{/if}}
 	<ul>
-		{{#link-to 'challenge' tagName='li'}}
-			{{link-to 'Challenges' 'challenge'}}
-		{{/link-to}}
 		{{#link-to 'scoreboard' tagName='li'}}
 			{{link-to 'Scoreboard' 'scoreboard'}}
 		{{/link-to}}
-		{{#link-to 'admin' tagName='li'}}
-			{{link-to 'Admin' 'admin'}}
-		{{/link-to}}
-		<li><a onClick={{action "logout"}}>Logout</a></li>
+		{{#unless auth.isLoggedIn}}
+			{{#link-to 'login' tagName='li'}}
+				{{link-to 'Login' 'login'}}
+			{{/link-to}}
+		{{/unless}}
+		{{#if auth.isLoggedIn}}
+			{{#link-to 'challenge' tagName='li'}}
+				{{link-to 'Challenges' 'challenge'}}
+			{{/link-to}}
+			{{#link-to 'admin' tagName='li'}}
+				{{link-to 'Admin' 'admin'}}
+			{{/link-to}}
+			<li><a onClick={{action "logout"}}>Logout</a></li>
+		{{/if}}
 	</ul>
-	<span class="welcome-text">Hello {{auth.user.username}}</span>
 </div>
