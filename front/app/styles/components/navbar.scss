@@ -1,7 +1,7 @@
 .nav-bar {
 	height: auto;
 	display: flex;
-	background-color: $cod-gray;
+	background-color: $temptress;
 	
 	ul {
 	    list-style-type: none;
@@ -27,7 +27,7 @@
 	}
 
 	li a:hover {
-	    background-color: $tundora;
+	    background-color: $button-color;
 	    cursor: pointer;
 	}
 }

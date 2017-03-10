@@ -15,7 +15,7 @@
 
 /* The Close Button */
 .close {
-    color: $white;
+    color: $button-color;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -23,7 +23,7 @@
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: $white;
     text-decoration: none;
     cursor: pointer;
 }
@@ -31,18 +31,39 @@
 /* Modal Header */
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: $main-heading-color;
+    display: flex;
     color: white;
+    justify-content: space-between;
+    align-items: center;
 }
-
+.modal-heading {
+    font-size: 20px;
+}
 /* Modal Body */
 .modal-body {padding: 2px 16px;}
 
 /* Modal Footer */
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: $main-heading-color;
     color: white;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-submit {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: $button-color;
+    border: 0;
+    padding: 10px;
+    margin: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100px;
 }
 
 /* Modal Content */
