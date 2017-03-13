@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 				xhrFields: {
 				    withCredentials: true
 				},
-				crossDomain: false
+				crossDomain: true
 			}).then((results) => {
 				console.log('results', results);
 			});
