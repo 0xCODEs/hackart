@@ -3,16 +3,17 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>Team</th>
-				<th>Balloon 1</th>
-				<th>Balloon 2</th>
-				<th>Balloon 3</th>
-				<th>Score</th>
+				<th class="headContent">Team</th>
+				<th class="headContent">Balloon 1</th>
+				<th class="headContent">Balloon 2</th>
+				<th class="headContent">Balloon 3</th>
+				<th class="headContent">Score</th>
 			</tr>
 		</thead>
 		{{!-- I envision the structure being something like: --}}
 		{{!-- team: {
 					name: '',
+					teamImage: '',
 					balloons: [
 						{popped: true},
 						{popped: true},
@@ -22,11 +23,20 @@
 			    } 
 		--}}
 		<tbody>
+			{{!-- example row --}}
+			<tr><td class="gridContent"><div class="teamLogos"><img src="http://media1.santabanta.com/full1/Miscellaneous/Logos/logos-135a.jpg" width="60px"/>test 1</div></td><td class="gridContent">test 2</td><td class="gridContent">test 3</td><td class="gridContent">test 4</td><td class="gridContent">test 5</td></tr>
+
+			{{!-- real content --}}
 			{{#each model as |team|}}
 				<tr>
-					<td>{{team.name}}</td>
+					<td class="gridContent">
+						<div class="teamLogos">
+							<img src="{{team.teamImage}}"/>
+							{{team.name}}
+						</div>
+					</td>
 					{{#each team.balloons as |balloon|}}
-						<td>{{balloon.popped}}</td>
+						<td class="gridContent">{{balloon.popped}}</td>
 					{{/each}}
 					<td>{{team.score}}</td>
 				</tr>
