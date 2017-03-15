@@ -15,9 +15,8 @@ router.register(r'scoreboard', ScoreboardViewSet)
 #router.register(r'userprofiles', views.UserprofileViewSet)
 
 urlpatterns = [
-    #Django Rest Auth
     url(r'^auth/', include('rest_framework.urls')),
-    url(r'^', include(router.urls)),
     url(r'^session/', csrf_exempt(Session.as_view())),
-    #url(r'^challenges/', csrf_exempt(ChallengeView.as_view())),
+    url(r'^flags/(?P<challenge_id>\d+)/?$', csrf_exempt(FlagViewDetail.as_view())),
+    url(r'^', include(router.urls)),
 ]
