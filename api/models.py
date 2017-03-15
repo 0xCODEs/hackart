@@ -81,7 +81,7 @@ class Team(models.Model):
   points = models.IntegerField(default=0)
   correct_flags = models.IntegerField(default=0)
   wrong_flags = models.IntegerField(default=0)
-  user = models.OneToOneField(User, related_name='teams', related_query_name='team')
+  user = models.OneToOneField(User, related_name='team', related_query_name='team')
   solved = models.ManyToManyField('Challenge', blank=True, related_name='solved', through='ChallengeTimestamp')
   last_timestamp = models.DateTimeField(default=datetime.fromtimestamp(0))
   created = models.DateTimeField(auto_now_add=True)

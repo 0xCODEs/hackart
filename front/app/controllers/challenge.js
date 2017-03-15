@@ -19,7 +19,6 @@ export default Ember.Controller.extend({
 			const flag = this.get('flag');
 
 			Ember.$.ajax({
-				contentType: "text/json",
 				type: "POST",
 				url: `http://gitlab.nullify.online:8592/api/flags/${id}/`,
 				data: { flag: flag },

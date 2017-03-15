@@ -14,6 +14,7 @@ from rest_framework_json_api.views import RelationshipView
 from django.core.exceptions import ObjectDoesNotExist
 #from api.validators import check_basic
 from rest_framework_json_api import serializers
+import re
 
 # Create your views here.
 class Session(APIView):
@@ -115,7 +116,7 @@ def check_flag(team, challenge, flag):
     # If the user input the correct flag, update the team's correct flag
     # count else update the wrong flags count and return an error.
     if correct:
-      team.correctflags = team.correctflags + 1
+      team.correct_flags = team.correct_flags + 1
       team.save()
 
       # update timestamps
@@ -123,7 +124,7 @@ def check_flag(team, challenge, flag):
       return True, error
     else:
       error = 'Invalid flag'
-      team.wrongflags = team.wrongflags + 1
+      team.wrong_flags = team.wrong_flags + 1
       team.save()
       return False, error
   else:
@@ -147,7 +148,7 @@ class FlagViewDetail(APIView):
     """
     Handles flag submit for challenge id
     """
-    return Response(str(request.user))
+    #return Response(str(request.user))
     try:
       challenge = Challenge.objects.get(id=challenge_id)
     except ObjectDoesNotExist:
@@ -157,8 +158,6 @@ class FlagViewDetail(APIView):
       return Response('Flag not given')
 
     flag = request.data['flag']
-
-    
 
     try:
       if not request.user.team:
