@@ -16,7 +16,7 @@ router.register(r'scoreboard', ScoreboardViewSet)
 
 urlpatterns = [
     url(r'^auth/', include('rest_framework.urls')),
-    url(r'^session/', csrf_exempt(Session.as_view())),
+    url(r'^session/', csrf_exempt(SessionView.as_view())),
     url(r'^flags/(?P<challenge_id>\d+)/?$', csrf_exempt(FlagViewDetail.as_view())),
     url(r'^', include(router.urls)),
 ]

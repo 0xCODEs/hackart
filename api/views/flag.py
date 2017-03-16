@@ -1,8 +1,9 @@
-from django.shortcuts import render
+import re
 from api.models import *
-from django.contrib.auth.models import User
-from rest_framework import viewsets
 from api.serializers import *
+from django.contrib.auth.models import User
+from django.shortcuts import render
+from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -11,80 +12,8 @@ from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login, logout
 from rest_framework import status
 from rest_framework_json_api.views import RelationshipView
-from django.core.exceptions import ObjectDoesNotExist
-#from api.validators import check_basic
 from rest_framework_json_api import serializers
-import re
 
-# Create your views here.
-class Session(APIView):
-	permission_classes = (AllowAny,)
-	def form_response(self, isauthenticated, userid, username, error=""):
-		data = {
-			'isauthenticated': isauthenticated,
-			'userid': userid,
-			'username': username
-		}
-		if error:
-			data['message'] = error
-
-		return Response(data)
-
-	def get(self, request, *args, **kwargs):
-		# Get the current user
-		if request.user.is_authenticated():
-			return self.form_response(True, request.user.id, request.user.username)
-		return self.form_response(False, None, None)
-
-	def post(self, request, *args, **kwargs):
-		# Login
-		username = request.POST.get('username')
-		password = request.POST.get('password')
-		user = authenticate(username=username, password=password)
-		if user is not None:
-			if user.is_active:
-				login(request, user)
-				return self.form_response(True, user.id, user.username)
-			return self.form_response(False, None, None, "Account is suspended")
-		return self.form_response(False, None, None, "Invalid username or password")
-
-	def delete(self, request, *args, **kwargs):
-		# Logout
-		logout(request)
-		return Response(status=status.HTTP_204_NO_CONTENT)
-
-# Create your views here.
-class ChallengeViewSet(viewsets.ModelViewSet):
-    permission_classes = (AllowAny,)
-    queryset = Challenge.objects.all()
-    serializer_class = ChallengeSerializer  
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed.
-    """
-    permission_classes = (AllowAny,)
-    resource_name = 'users'
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-class TeamViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed.
-    """
-    permission_classes = (AllowAny,)
-    resource_name = 'teams'
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
-  
-class ScoreboardViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed.
-    """
-    permission_classes = (AllowAny,)
-    resource_name = 'scoreboard'
-    queryset = Scoreboard.objects.all()
-    serializer_class = ScoreboardSerializer
 
 def update_solved(team, challenge):
   """
@@ -171,5 +100,3 @@ class FlagViewDetail(APIView):
       return Response('Correct flag')
     else:
       return Response(error)
-  
-  
