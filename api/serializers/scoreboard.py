@@ -1,5 +1,5 @@
 #from rest_framework import serializers
-from edctf.api.models import Scoreboard
+from api.models import Scoreboard
 from rest_framework_json_api import serializers
 from rest_framework_json_api.relations import ResourceRelatedField
 

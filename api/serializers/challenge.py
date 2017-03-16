@@ -1,5 +1,5 @@
 #from rest_framework import serializers
-from edctf.api.models import Challenge
+from api.models import Challenge
 from rest_framework_json_api import serializers
 from rest_framework_json_api.relations import ResourceRelatedField
 
